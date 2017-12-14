@@ -1,0 +1,2 @@
+# No sysconfig
+sed -i '/#include <config.h>/d' %{buildroot}/usr/include/volume_key/libvolume_key.h
