@@ -4,14 +4,13 @@
 #
 Name     : volume_key
 Version  : 0.3.9
-Release  : 6
+Release  : 7
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.9.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.9.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: volume_key-bin
-Requires: volume_key-legacypython
 Requires: volume_key-lib
 Requires: volume_key-locales
 Requires: volume_key-doc
@@ -91,7 +90,6 @@ locales components for the volume_key package.
 %package python
 Summary: python components for the volume_key package.
 Group: Default
-Requires: volume_key-legacypython
 
 %description python
 python components for the volume_key package.
@@ -105,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517682055
+export SOURCE_DATE_EPOCH=1519395786
 %reconfigure --disable-static PYTHON=/usr/bin/python2
 make  %{?_smp_mflags}
 
@@ -117,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check ||:
 
 %install
-export SOURCE_DATE_EPOCH=1517682055
+export SOURCE_DATE_EPOCH=1519395786
 rm -rf %{buildroot}
 %make_install
 %find_lang volume_key
