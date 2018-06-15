@@ -4,7 +4,7 @@
 #
 Name     : volume_key
 Version  : 0.3.10
-Release  : 12
+Release  : 13
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.10.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.10.tar.gz
 Summary  : No detailed summary available
