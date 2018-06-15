@@ -24,7 +24,7 @@ BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(libcryptsetup)
 BuildRequires : pkgconfig(nss)
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : swig
 
