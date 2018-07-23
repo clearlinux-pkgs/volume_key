@@ -1,2 +1,4 @@
+Configure miss: python3.5
+Configure miss: python3.6
 Configure miss: gpg2
 Configure miss: whether we should use -Werror
