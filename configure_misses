@@ -1,3 +1,4 @@
+Configure miss: whether to create Python 2 bindings
 Configure miss: python3.6
 Configure miss: python3.5
 Configure miss: whether we should use -Werror

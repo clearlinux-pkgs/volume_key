@@ -4,7 +4,7 @@
 #
 Name     : volume_key
 Version  : 0.3.12
-Release  : 20
+Release  : 21
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Summary  : No detailed summary available
@@ -27,7 +27,8 @@ BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(libcryptsetup)
 BuildRequires : pkgconfig(nss)
-BuildRequires : python-dev
+BuildRequires : python
+BuildRequires : python-core
 BuildRequires : python3-dev
 BuildRequires : swig
 
@@ -42,7 +43,6 @@ associated command-line tool, named volume_key.
 Summary: bin components for the volume_key package.
 Group: Binaries
 Requires: volume_key-license = %{version}-%{release}
-Requires: volume_key-man = %{version}-%{release}
 
 %description bin
 bin components for the volume_key package.
@@ -54,18 +54,10 @@ Group: Development
 Requires: volume_key-lib = %{version}-%{release}
 Requires: volume_key-bin = %{version}-%{release}
 Provides: volume_key-devel = %{version}-%{release}
+Requires: volume_key = %{version}-%{release}
 
 %description dev
 dev components for the volume_key package.
-
-
-%package legacypython
-Summary: legacypython components for the volume_key package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the volume_key package.
 
 
 %package lib
@@ -126,20 +118,26 @@ python3 components for the volume_key package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1539035066
-%reconfigure --disable-static --with-python3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569619541
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+%reconfigure --disable-static --with-python3 \
+--without-python
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check ||:
 
 %install
-export SOURCE_DATE_EPOCH=1539035066
+export SOURCE_DATE_EPOCH=1569619541
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/volume_key
 cp COPYING %{buildroot}/usr/share/package-licenses/volume_key/COPYING
@@ -160,10 +158,6 @@ sed -i '/#include <config.h>/d' %{buildroot}/usr/include/volume_key/libvolume_ke
 %defattr(-,root,root,-)
 /usr/include/volume_key/libvolume_key.h
 /usr/lib64/libvolume_key.so
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files lib
 %defattr(-,root,root,-)
