@@ -4,7 +4,7 @@
 #
 Name     : volume_key
 Version  : 0.3.12
-Release  : 21
+Release  : 22
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Summary  : No detailed summary available
@@ -27,8 +27,7 @@ BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(libcryptsetup)
 BuildRequires : pkgconfig(nss)
-BuildRequires : python
-BuildRequires : python-core
+BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : swig
 
@@ -119,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569619541
+export SOURCE_DATE_EPOCH=1570659174
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -137,7 +136,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check ||:
 
 %install
-export SOURCE_DATE_EPOCH=1569619541
+export SOURCE_DATE_EPOCH=1570659174
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/volume_key
 cp COPYING %{buildroot}/usr/share/package-licenses/volume_key/COPYING
