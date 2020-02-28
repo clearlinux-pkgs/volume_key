@@ -4,10 +4,10 @@
 #
 Name     : volume_key
 Version  : 0.3.12
-Release  : 24
+Release  : 25
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
-Summary  : No detailed summary available
+Summary  : A library for manipulating storage volume encryption keys and storing them separately from volumes to handle forgotten passphrases
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: volume_key-bin = %{version}-%{release}
@@ -53,6 +53,7 @@ Group: Development
 Requires: volume_key-lib = %{version}-%{release}
 Requires: volume_key-bin = %{version}-%{release}
 Provides: volume_key-devel = %{version}-%{release}
+Requires: volume_key = %{version}-%{release}
 Requires: volume_key = %{version}-%{release}
 
 %description dev
@@ -112,13 +113,15 @@ python3 components for the volume_key package.
 
 %prep
 %setup -q -n volume_key-volume_key-0.3.12
+cd %{_builddir}/volume_key-volume_key-0.3.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570659174
+export SOURCE_DATE_EPOCH=1582904826
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -136,13 +139,14 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check ||:
 
 %install
-export SOURCE_DATE_EPOCH=1570659174
+export SOURCE_DATE_EPOCH=1582904826
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/volume_key
-cp COPYING %{buildroot}/usr/share/package-licenses/volume_key/COPYING
+cp %{_builddir}/volume_key-volume_key-0.3.12/COPYING %{buildroot}/usr/share/package-licenses/volume_key/4cc77b90af91e615a64ae04893fdffa7939db84c
 %make_install
 %find_lang volume_key
 ## install_append content
+# No sysconfig
 sed -i '/#include <config.h>/d' %{buildroot}/usr/include/volume_key/libvolume_key.h
 ## install_append end
 
@@ -165,7 +169,7 @@ sed -i '/#include <config.h>/d' %{buildroot}/usr/include/volume_key/libvolume_ke
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/volume_key/COPYING
+/usr/share/package-licenses/volume_key/4cc77b90af91e615a64ae04893fdffa7939db84c
 
 %files man
 %defattr(0644,root,root,0755)

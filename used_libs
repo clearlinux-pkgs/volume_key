@@ -14,7 +14,6 @@ libnssutil3.so
 libplc4.so
 libplds4.so
 libpthread.so.0
-libpython3.7m.so.1.0
 libsmime3.so
 libssl3.so
 libutil.so.1
