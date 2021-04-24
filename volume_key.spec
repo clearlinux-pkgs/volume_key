@@ -4,7 +4,7 @@
 #
 Name     : volume_key
 Version  : 0.3.12
-Release  : 31
+Release  : 32
 URL      : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Source0  : https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 Summary  : A library for manipulating storage volume encryption keys and storing them separately from volumes to handle forgotten passphrases
